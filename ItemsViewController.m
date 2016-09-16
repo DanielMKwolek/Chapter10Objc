@@ -9,6 +9,7 @@
 #import "ItemsViewController.h"
 #import "ItemStore.h"
 #import "Item.h"
+#import "ItemCell.h"
 
 @interface ItemsViewController ()
 
@@ -28,19 +29,25 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0);
     self.tableView.contentInset = insets;
     self.tableView.scrollIndicatorInsets = insets;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 65;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell =
-    [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
+    ItemCell *cell =
+    [self.tableView dequeueReusableCellWithIdentifier:@"ItemCell"
                                          forIndexPath:indexPath];
+    
+    [cell updateLabels];
     
     Item *item = self.itemStore.allItems[indexPath.row];
     
-    cell.textLabel.text = item.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    cell.nameLabel.text = item.name;
+    cell.serialNumberLabel.text = item.serialNumber;
+    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+
     return cell;
 }
 
