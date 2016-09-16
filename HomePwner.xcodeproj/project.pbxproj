@@ -107,9 +107,9 @@
 		65BDB49D1D8C6B420091884F /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
-				65BDB4D41D8C6C790091884F /* Item.h */,
 				65BDB4D71D8C6D890091884F /* ItemStore.h */,
 				65BDB4D81D8C6D890091884F /* ItemStore.m */,
+				65BDB4D41D8C6C790091884F /* Item.h */,
 				65BDB4D51D8C6C790091884F /* Item.m */,
 				65BDB4D11D8C6BF00091884F /* ItemsViewController.h */,
 				65BDB4D21D8C6BF00091884F /* ItemsViewController.m */,

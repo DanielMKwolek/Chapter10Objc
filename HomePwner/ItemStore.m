@@ -19,9 +19,6 @@
     self = [super init];
     if (self) {
         _items = [NSMutableArray array];
-        for (int i = 0; i < 5; i++) {
-            [self createItem];
-        }
     }
     return self;
 }
@@ -35,6 +32,23 @@
     [self.items addObject:newItem];
     return newItem;
 }
+
+- (void)removeItem:(Item *)item {
+    [self.items removeObject:item];
+}
+
+- (void)moveItemAtIndex:(NSUInteger)oldIndex
+                toIndex:(NSUInteger)newIndex {
+    if (oldIndex == newIndex) {
+        return; }
+    // Get a reference to the object being removed so it can be re-inserted
+    Item *item = self.items[oldIndex];
+    // Remove it from the array
+    [self.items removeObjectAtIndex:oldIndex];
+    // Insert it at the new index
+    [self.items insertObject:item atIndex:newIndex];
+}
+
 
 @end
 
