@@ -11,8 +11,10 @@
 #import "Item.h"
 #import "ItemCell.h"
 #import "DetailViewController.h"
+#import "ImageStore.h"
 
 @interface ItemsViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *imageView;
 
 @end
 
@@ -32,6 +34,8 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    
+    
 }
 
 
@@ -95,9 +99,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                handler:^(UIAlertAction * _Nonnull action) {
                                    // Remove the item from the store
                                    [self.itemStore removeItem:item];
+                                   
+                                   // Delete the item's image from the image store
+                                   [self.imageStore deleteImageForKey:item.itemKey];
+                                   
                                    // Also remove its cell from the table view
                                    [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                                          withRowAnimation:UITableViewRowAnimationAutomatic];
+                                   
                                }];
         [ac addAction:cancelAction];
         [ac addAction:deleteAction];
@@ -113,6 +122,7 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
       toIndexPath:(NSIndexPath *)destinationIndexPath {
     [self.itemStore moveItemAtIndex:sourceIndexPath.row
                             toIndex:destinationIndexPath.row];
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -126,6 +136,7 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
         DetailViewController *dvc =
         (DetailViewController *)segue.destinationViewController;
         dvc.item = item;
+        dvc.imageStore = self.imageStore;
     }
 }
 

@@ -15,14 +15,19 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Create an ItemStore
     ItemStore *itemStore = [ItemStore new];
+    
+    ImageStore *imageStore = [ImageStore new];
     
     
     UINavigationController *navController
     = (UINavigationController *)self.window.rootViewController; ItemsViewController *ivc = (ItemsViewController *)navController.topViewController;
     ivc.itemStore = itemStore;
+    ivc.imageStore = imageStore;
+    
     
     return YES;
 }

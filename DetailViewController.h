@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class Item;
+@class ImageStore;
 
 @interface DetailViewController : UIViewController
 
 @property (nonatomic) Item *item;
+@property (nonatomic) ImageStore *imageStore;
 
 @end

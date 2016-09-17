@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ItemStore.h"
 #import "ItemsViewController.h"
+#import "ImageStore.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
