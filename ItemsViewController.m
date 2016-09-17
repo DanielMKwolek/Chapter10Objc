@@ -24,15 +24,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    CGFloat statusBarHeight =
-    [UIApplication sharedApplication].statusBarFrame.size.height;
-    UIEdgeInsets insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0);
-    self.tableView.contentInset = insets;
-    self.tableView.scrollIndicatorInsets = insets;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 65;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,19 +66,6 @@
     // Insert this row into the table
     [self.tableView insertRowsAtIndexPaths:@[indexPath]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-- (IBAction)toggleEditingMode:(id)sender {
-    if (self.editing) {
-        // Change the text of the button to inform the user
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        // Turn off editing mode
-        [self setEditing:NO animated:YES];
-    } else {
-        // Change the text of the button to inform the user
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        // Turn on editing mode
-        [self setEditing:YES animated:YES];
-    }
 }
 
 
@@ -139,6 +127,16 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
         (DetailViewController *)segue.destinationViewController;
         dvc.item = item;
     }
+}
+
+// MARK: - Initializers
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.navigationItem.leftBarButtonItem = [self editButtonItem];
+    }
+    return self;
 }
 
 

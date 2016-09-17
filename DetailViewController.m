@@ -10,11 +10,12 @@
 #import "Item.h"
 
 
-@interface DetailViewController ()
+@interface DetailViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (strong, nonatomic) IBOutlet UITextField *valueField;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+- (IBAction)backgroundTapped:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -54,5 +55,33 @@
     return formatter;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // Update the item's properties from the text fields
+    self.item.name = self.nameField.text;
+    self.item.serialNumber = self.serialNumberField.text;
+    
+    [self.view endEditing:YES];
+    
+    NSNumber *numberInDollars = [[self valueFormatter] numberFromString:self.valueField.text];
+    self.item.valueInDollars = numberInDollars.intValue;
+}
+
+// MARK: - UITextField Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+- (IBAction)backgroundTapped:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
+
+// MARK: - Accessors
+- (void)setItem:(Item *)item {
+    _item = item;
+    self.navigationItem.title = item.name;
+}
 
 @end
