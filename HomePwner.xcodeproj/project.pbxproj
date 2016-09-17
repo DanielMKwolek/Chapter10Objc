@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65725F111D8CC0D700B61A8E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65725F101D8CC0D700B61A8E /* DetailViewController.m */; };
 		65BDB4A01D8C6B420091884F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BDB49F1D8C6B420091884F /* main.m */; };
 		65BDB4A31D8C6B420091884F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BDB4A21D8C6B420091884F /* AppDelegate.m */; };
 		65BDB4A91D8C6B420091884F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BDB4A71D8C6B420091884F /* Main.storyboard */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65725F0F1D8CC0D700B61A8E /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		65725F101D8CC0D700B61A8E /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		65BDB49B1D8C6B420091884F /* HomePwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BDB49F1D8C6B420091884F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65BDB4A11D8C6B420091884F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 		65BDB4921D8C6B420091884F = {
 			isa = PBXGroup;
 			children = (
+				65725F0F1D8CC0D700B61A8E /* DetailViewController.h */,
+				65725F101D8CC0D700B61A8E /* DetailViewController.m */,
 				65BDB49D1D8C6B420091884F /* HomePwner */,
 				65BDB4B71D8C6B420091884F /* HomePwnerTests */,
 				65BDB4C21D8C6B420091884F /* HomePwnerUITests */,
@@ -297,6 +302,7 @@
 				65BDB4A31D8C6B420091884F /* AppDelegate.m in Sources */,
 				65BDB4A01D8C6B420091884F /* main.m in Sources */,
 				65BDB4D91D8C6D890091884F /* ItemStore.m in Sources */,
+				65725F111D8CC0D700B61A8E /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
