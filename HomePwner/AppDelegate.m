@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
+@property (nonatomic) ItemStore *itemStore;
 
 @end
 
@@ -19,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Create an ItemStore
     ItemStore *itemStore = [ItemStore new];
+    self.itemStore = itemStore;
     
     ImageStore *imageStore = [ImageStore new];
     
@@ -27,6 +29,7 @@
     = (UINavigationController *)self.window.rootViewController; ItemsViewController *ivc = (ItemsViewController *)navController.topViewController;
     ivc.itemStore = itemStore;
     ivc.imageStore = imageStore;
+    
     
     
     return YES;
@@ -40,6 +43,12 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    BOOL success = [self.itemStore saveChanges];
+    if (success) {
+        NSLog(@"Saved %lu items to disk.", (unsigned long)self.itemStore.allItems.count);
+    } else {
+        NSLog(@"Failed to save the items to disk.");
+    }
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }

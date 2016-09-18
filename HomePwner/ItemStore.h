@@ -19,4 +19,6 @@
 - (void)moveItemAtIndex:(NSUInteger)oldIndex
                 toIndex:(NSUInteger)newIndex;
 
+- (BOOL)saveChanges;
+
 @end
